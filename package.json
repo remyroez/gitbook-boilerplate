@@ -1,0 +1,22 @@
+{
+  "name": "gitbook-boilerplate",
+  "version": "1.0.0",
+  "description": "GitBook Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/remyroez/gitbook-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/remyroez/gitbook-boilerplate/issues"
+  },
+  "homepage": "https://github.com/remyroez/gitbook-boilerplate#readme",
+  "devDependencies": {
+    "gitbook": "^3.2.2"
+  }
+}
