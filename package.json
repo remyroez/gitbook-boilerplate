@@ -1,49 +1,55 @@
 {
-  "name": "gitbook-boilerplate",
-  "version": "1.0.0",
-  "description": "GitBook Boilerplate",
-  "homepage": "https://github.com/remyroez/gitbook-boilerplate#readme",
-  "bugs": {
-    "url": "https://github.com/remyroez/gitbook-boilerplate/issues"
-  },
-  "license": "ISC",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/remyroez/gitbook-boilerplate.git"
-  },
-  "config": {
-    "input_dir": "./",
-    "output_dir": "./docs",
-    "output_file": "book",
-    "serve_port": "4000"
-  },
-  "scripts": {
-    "start": "npm run serve && npm run browser",
-    "client": "gitbook",
-    "client:build": "npm run client -- build",
-    "client:serve": "npm run client -- serve",
-    "client:install": "npm run client -- install",
-    "client:parse": "npm run client -- parse",
-    "client:init": "npm run client -- init",
-    "client:pdf": "npm run client -- pdf",
-    "client:epub": "npm run client -- epub",
-    "client:mobi": "npm run client -- mobi",
-    "client:help": "npm run client -- help",
-    "serve": "npm run client:serve",
-    "build": "npm run client:build",
-    "build:website": "npm run build -- npm_package_config_input_dir npm_package_config_output_dir",
-    "build:pdf": "cross-conf-env npm run client:pdf -- npm_package_config_input_dir %npm_package_config_output_dir%/%npm_package_config_output_file%.pdf",
-    "build:epub": "cross-conf-env npm run client:epub -- npm_package_config_input_dir %npm_package_config_output_dir%/%npm_package_config_output_file%.epub",
-    "build:mobi": "cross-conf-env npm run client:mobi -- npm_package_config_input_dir %npm_package_config_output_dir%/%npm_package_config_output_file%.mobi",
-    "browser": "cross-conf-env opener http://localhost:$npm_package_config_serve_port",
-    "deploy": "cross-conf-env gh-pages -d npm_package_config_output_dir",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "devDependencies": {
-    "cross-conf-env": "^1.1.2",
-    "gitbook-cli": "^2.3.0",
-    "opener": "^1.4.3",
-    "rimraf": "^2.6.1"
-  }
+	"name": "gitbook-boilerplate",
+	"version": "1.0.0",
+	"description": "GitBook Boilerplate",
+	"homepage": "https://github.com/remyroez/gitbook-boilerplate#readme",
+	"bugs": {
+		"url": "https://github.com/remyroez/gitbook-boilerplate/issues"
+	},
+	"license": "ISC",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/remyroez/gitbook-boilerplate.git"
+	},
+	"scripts": {
+		"start": "npm run serve -- --open",
+		"client": "gitbook",
+		"client:build": "npm run client -- build",
+		"client:serve": "npm run client -- serve",
+		"client:install": "npm run client -- install",
+		"client:parse": "npm run client -- parse",
+		"client:init": "npm run client -- init",
+		"client:pdf": "npm run client -- pdf",
+		"client:epub": "npm run client -- epub",
+		"client:mobi": "npm run client -- mobi",
+		"client:help": "npm run client -- help",
+		"serve": "cross-conf-env npm run client:serve -- npm_package_config_input_dir npm_package_config_output_dir --port npm_package_config_serve_port",
+		"build": "cross-conf-env npm run client:build -- npm_package_config_input_dir npm_package_config_output_dir",
+		"pdf": "cross-conf-env npm run client:pdf -- npm_package_config_input_dir %npm_package_config_output_dir%/%npm_package_config_output_file%.pdf",
+		"epub": "cross-conf-env npm run client:epub -- npm_package_config_input_dir %npm_package_config_output_dir%/%npm_package_config_output_file%.epub",
+		"mobi": "cross-conf-env npm run client:mobi -- npm_package_config_input_dir %npm_package_config_output_dir%/%npm_package_config_output_file%.mobi",
+		"deploy": "cross-conf-env gh-pages -d npm_package_config_output_dir",
+		"clean": "run-p clean:website clean:pdf clean:epub clean:mobi",
+		"clean:website": "cross-conf-env rimraf npm_package_config_output_dir",
+		"clean:pdf": "cross-conf-env rimraf %npm_package_config_output_dir%/%npm_package_config_output_file%.pdf",
+		"clean:epub": "cross-conf-env rimraf %npm_package_config_output_dir%/%npm_package_config_output_file%.epub",
+		"clean:mobi": "cross-conf-env rimraf %npm_package_config_output_dir%/%npm_package_config_output_file%.mobi",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"config": {
+		"input_dir": "./",
+		"output_dir": "./_book",
+		"output_file": "book",
+		"serve_port": "4000"
+	},
+	"devDependencies": {
+		"cross-conf-env": "^1.1.2",
+		"gitbook-cli": "^2.3.0",
+		"npm-run-all": "^4.0.2",
+		"rimraf": "^2.6.1"
+	},
+	"optionalDependencies": {
+		"ebook-convert": "^2.0.1"
+	}
 }

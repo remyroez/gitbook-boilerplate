@@ -1,3 +1,11 @@
+# GitBook book build output
+_book/
+
+# GitBook eBook build output
+*.epub
+*.mobi
+*.pdf
+
 # Logs
 logs
 *.log
@@ -56,4 +64,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
